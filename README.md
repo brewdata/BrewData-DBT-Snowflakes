@@ -126,7 +126,7 @@ This will run your dbt model while utilizing the BrewData package.
 
 ## Additional Resources
 
-To learn more about configuration options and available strategies, [click here]().
+To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata-DBT/readme.md).
 
 ---
 
