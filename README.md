@@ -128,9 +128,7 @@ def model(dbt, session):
     ddf = fsd.synthetic_file_content
     return ddf
 ```
-
-Execute your dbt model with the following command:
-- if you don't want to specify the `config.yml` inside the model directory then can provide the package dependencies inside model file.
+To know more click [here]()
 
 ```model/model1.py
 def model(dbt, session):
@@ -138,6 +136,9 @@ def model(dbt, session):
    dbt.config(
          materialized="table",
          packages = ["shapely","transformers","sympy", "faker", "requests", "xmltodict", "xmlschema", "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
+         # tested on python 3.10
+         # packages=["shapely==2.0.5", "transformers==4.45.2", "sympy==1.13.3", "faker==30.8.1", "requests==2.32.3", "xmltodict==0.13.0", "xmlschema==2.3.1", "pandas==2.0.3", "numpy==1.24.3", "scikit-learn==1.3.0", "scipy==1.10.1", "tqdm==4.66.5", "pytorch==2.3.0", "datasets==2.19.1"],
+         
          imports=['@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip']
       )
     from file_synthetic_data import FileSyntheticData
