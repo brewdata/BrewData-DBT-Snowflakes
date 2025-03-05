@@ -130,7 +130,7 @@ def model(dbt, session):
 ```
 
 Execute your dbt model with the following command:
-- if you don't want to specify the config.yml inside the model directory then can provide the package dependencies inside model file.
+- if you don't want to specify the `config.yml` inside the model directory then can provide the package dependencies inside model file.
 
 ```model/model1.py
 def model(dbt, session):
