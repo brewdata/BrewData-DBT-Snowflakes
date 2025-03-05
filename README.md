@@ -5,7 +5,7 @@ This guide walks you through the process of setting up and using the BrewData pa
 ## Prerequisites
 
 - Snowflake account with appropriate permissions
-- Python installed on your system
+- Python(ideally 3.10) installed on your system
 - Basic familiarity with dbt and Snowflake
 
 ## Step 1: Install dbt Core
