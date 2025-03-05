@@ -104,8 +104,8 @@ def model(dbt, session):
     fsd = FileSyntheticData(df=df, locale='en-US')
     
     # Configuration for synthetic data generation
-    config={"columns_config":[{"source_column": "SPECIES",
-            "pattern":None, "pattern_id":None, "strategy_id":5, "dependent_fields":[], "tokenization_type": "NA"}
+    config={"columns_config":[{"source_column": "amount",
+            "pattern":None, "pattern_id":None, "strategy_id":60, "dependent_fields":[], "tokenization_type": "NA"}
                           ]}
     
     # Generate synthetic data
