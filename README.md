@@ -142,6 +142,9 @@ def model(dbt, session):
       )
     from file_synthetic_data import FileSyntheticData
     #... and rest of the code here
+```
+
+- run the model with
 ```bash
 dbt run --select model1
 ```
