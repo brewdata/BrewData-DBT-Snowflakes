@@ -45,13 +45,13 @@ dbt init
 
 
 
-1. Create a configuration YAML file named `config.yaml` in the models directory of your dbt-project:
+1. Create a configuration YAML file named `config.yml` in the models directory of your dbt-project:
 
 ```bash
-touch models/config.yaml
+touch models/config.yml
 ```
 
-2. Add the following content to `config.yaml`:
+2. Add the following content to `config.yml`:
 - add the model name to the name field where you wish to use the brewdata package
 ```yaml
 version: 2
@@ -130,7 +130,21 @@ def model(dbt, session):
 ```
 
 Execute your dbt model with the following command:
+- if you don't want to specify the `config.yml` inside the model directory then can provide the package dependencies inside model file.
 
+```model/model1.py
+def model(dbt, session):
+    # Configure the model with imports FIRST
+   dbt.config(
+         materialized="table",
+         packages = ["shapely","transformers","sympy", "faker", "requests", "xmltodict", "xmlschema", "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
+         imports=['@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip']
+      )
+    from file_synthetic_data import FileSyntheticData
+    #... and rest of the code here
+```
+
+- run the model with
 ```bash
 dbt run --select model1
 ```
