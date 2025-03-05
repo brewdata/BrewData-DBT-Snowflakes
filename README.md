@@ -1,177 +1,134 @@
 # Setting Up BrewData Package with dbt Core and Snowflake
 
-This guide walks you through the process of setting up and using the BrewData package with dbt Core and Snowflake.
+This guide provides a step-by-step walkthrough for setting up and using the BrewData package with dbt Core and Snowflake.
 
 ## Prerequisites
 
-- Snowflake account with appropriate permissions
-- Python(ideally 3.10) installed on your system
-- Basic familiarity with dbt and Snowflake
+Before you begin, ensure you have the following:
+
+- **Snowflake account** with appropriate permissions
+- **Python (>=3.10)** installed on your system
+- **Basic familiarity with dbt and Snowflake**
 
 ## Step 1: Install dbt Core
 
-Install dbt Core using pip:
+To install dbt Core and the Snowflake adapter, run:
 
 ```bash
 pip install dbt-core dbt-snowflake
 ```
 
+Verify the installation with:
+
+```bash
+dbt --version
+```
+
 ## Step 2: Initialize a dbt Project
 
-1. Create an empty folder for your dbt project:
+### 1. Create a directory for your dbt project:
 
 ```bash
 mkdir my_dbt_project
 cd my_dbt_project
 ```
 
-2. Initialize a new dbt project:
+### 2. Initialize a new dbt project:
 
 ```bash
 dbt init
 ```
 
-3. During initialization, you'll be prompted to configure your Snowflake connection. Provide the following information:
-   - Profile name (default is the project name)
-   - Database name
-   - Schema name
-   - Warehouse name
-   - Username
-   - Password (or other authentication method)
-   - Account identifier
-   - Role (optional)
+### 3. Configure Snowflake Connection:
+During initialization, you'll be prompted to enter your Snowflake connection details:
+- **Profile name** (default is the project name)
+- **Database name**
+- **Schema name**
+- **Warehouse name**
+- **Username**
+- **Password** (or other authentication method)
+- **Account identifier**
+- **Role** (optional)
 
-## Step 3: Configure BrewData Package
+## Step 3: Download and Upload the BrewData Package
 
+### 1. Download the BrewData package
 
+Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata_lib.zip).
 
-1. Create a configuration YAML file named `config.yml` in the models directory of your dbt-project:
+### 2. Upload the package to Snowflake
 
-```bash
-touch models/config.yml
-```
+Log in to your Snowflake account via the web UI and follow these steps:
 
-2. Add the following content to `config.yml`:
-- add the model name to the name field where you wish to use the brewdata package
-```yaml
-version: 2
+### 3. Create a Snowflake Stage
 
-models:
-  - name: <MODEL_NAME>
-    config:
-      packages:
-        - "shapely"
-        - "transformers"
-        - "sympy"
-        - "faker"
-        - "requests"
-        - "xmltodict"
-        - "xmlschema"
-        - "pandas"
-        - "numpy"
-        - "scikit-learn"
-        - "scipy"
-        - "tqdm"
-        - "pytorch"
-        - "datasets"
-      imports:
-        - "@<YOUR_SNOWFALKE_DB>.<YOUR_SNOWFALKE_SCHEMA>.<YOUR_SNOWFLAKE_STAGE>/brewdata_lib.zip"
-```
+1. Navigate to **Data** in the left-hand menu.
+2. Select your database and schema.
+3. Click **Create** > **Stage**.
+4. Name the stage, e.g., `<YOUR_SNOWFLAKE_STAGE>`.
+5. Choose **Internal Stage** and complete the setup.
 
-## Step 4: Download and Upload the BrewData Package
+### 4. Upload the ZIP File to the Stage
 
-1. Download the BrewData package ZIP file from the Github Repo 
+1. Open the newly created stage.
+2. Click **Upload** and select the BrewData ZIP file.
+3. Wait for the upload to complete.
 
+## Step 4: Run a dbt Model with the BrewData Package
 
-2. Log in to your Snowflake account through the web UI and upload the ZIP file to your Snowflake stage.
+Your dbt-python model (inside the `models` directory) can import the BrewData package and use it within the model.
 
-3. Navigate to the database you configured during dbt initialization.
+### Example: Using BrewData in a dbt-Python Model
 
-4. Create a new stage named `<YOUR_SNOWFLAKE_STAGE>`:
-   - Click on "Data" in the left navigation
-   - Select your database and schema
-   - Click "Create" and select "Stage"
-   - Name it `<YOUR_SNOWFLAKE_STAGE>`
-   - Configure it as an internal stage
-   - Click "Create"
+Create a new Python model (`models/brewdata_dbt_model.py`) and include the following code:
 
-5. Upload the downloaded ZIP file to the stage:
-   - Select the newly created stage
-   - Click "Upload" and select the downloaded ZIP file
-   - Wait for the upload to complete
-
-## Step 5: Run Your dbt Model with the BrewData Package
-
-your DBT-python model  present in the models directory can import the brewdata package and use it in the model.
-- Here is sample code for a DBT-python model that uses the brewdata package module file_synthetic_data :
-
-```model/model1.py
+```python
 def model(dbt, session):
-    # Configure the model with imports FIRST
+    # Configure the model with required packages and BrewData import
     dbt.config(
-        materialized="table"
+         materialized="table",
+         packages=["shapely","transformers","sympy", "faker", "requests", "xmltodict", "xmlschema", "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
+         # tested on python 3.10
+         # packages=["shapely==2.0.5", "transformers==4.45.2", "sympy==1.13.3", "faker==30.8.1", "requests==2.32.3", "xmltodict==0.13.0", "xmlschema==2.3.1", "pandas==2.0.3", "numpy==1.24.3", "scikit-learn==1.3.0", "scipy==1.10.1", "tqdm==4.66.5", "pytorch==2.3.0", "datasets==2.19.1"],
+
+         imports=['@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip'] # change to your @{DB_NAME}.{SCHEMA_NAME}.{STAGE_NAME}/brewdata_lib.zip
     )
+
+    # Import custom BrewData module AFTER the config call
+    from brewdata_dbt import FileSyntheticData
     
-    # Import custom package AFTER the config call
-    from file_synthetic_data import FileSyntheticData
-    
-    # Get customer data from upstream model
-    customer_data = dbt.source("public", "test3")
+    # Fetch customer data from an upstream model
+    customer_data = dbt.source("public", "customer") # (schema name, table name)
     df = customer_data.to_pandas()
 
     fsd = FileSyntheticData(df=df, locale='en-US')
-    # Apply transformations using our custom package
-    config={"columns_config":[{"source_column": "SPECIES",
-            "pattern":None, "pattern_id":None, "strategy_id":5, "dependent_fields":[] , "tokenization_type": "NA"}
+    
+    # Configuration for synthetic data generation
+    config={"columns_config":[{"source_column": "amount",
+            "pattern":None, "pattern_id":None, "strategy_id":60, "dependent_fields":[], "tokenization_type": "NA"}
                           ]}
-    fsd.start_synthetic(df, config, "en-US", limit=None, table_data=None,bias=None)
+    
+    # Generate synthetic data
+    fsd.start_synthetic(df, config, "en-US", limit=None, table_data=None, bias=None)
     ddf = fsd.synthetic_file_content
     return ddf
 ```
-To know more click [here]()
 
-```model/model1.py
-def model(dbt, session):
-    # Configure the model with imports FIRST
-   dbt.config(
-         materialized="table",
-         packages = ["shapely","transformers","sympy", "faker", "requests", "xmltodict", "xmlschema", "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
-         # tested on python 3.10
-         # packages=["shapely==2.0.5", "transformers==4.45.2", "sympy==1.13.3", "faker==30.8.1", "requests==2.32.3", "xmltodict==0.13.0", "xmlschema==2.3.1", "pandas==2.0.3", "numpy==1.24.3", "scikit-learn==1.3.0", "scipy==1.10.1", "tqdm==4.66.5", "pytorch==2.3.0", "datasets==2.19.1"],
-         
-         imports=['@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip']
-      )
-    from file_synthetic_data import FileSyntheticData
-    #... and rest of the code here
-```
+### Step 5: Run the Model
 
-- run the model with
+Execute the following command to run the model:
+
 ```bash
-dbt run --select model1
+dbt run --select brewdata_dbt_model
 ```
 
-This will run the model with the BrewData package imported and available for use.
-
-## Troubleshooting
-
-- **Connection Issues**: Verify your Snowflake credentials in the `profiles.yml` file.
-- **Package Import Errors**: Ensure the path to the ZIP file in the `imports` section of your config file is correct.
-- **Permission Errors**: Make sure your Snowflake role has the necessary permissions to access the stage and execute Python code.
-
-## Advanced Configuration
-
-For more advanced usage, you can:
-
-1. Create additional Python models that import functions from the BrewData package
-2. Configure different package dependencies for different models
-3. Set up CI/CD pipelines to automate the deployment process
+This will run your dbt model while utilizing the BrewData package.
 
 ## Additional Resources
 
-- [dbt Documentation](https://docs.getdbt.com/)
-- [Snowflake Python UDFs Documentation](https://docs.snowflake.com/en/sql-reference/udf-python.html)
-- [BrewData Package Documentation](https://docs.brewdata.com/) (replace with actual documentation URL)
+To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata-DBT/readme.md).
 
 ---
 
-Feel free to contribute to this guide by submitting pull requests or opening issues on GitHub.
+This guide ensures a smooth installation and setup process for dbt Core and the BrewData package in Snowflake.
+

@@ -59,7 +59,6 @@
 | 56 | Last Name (Retain Religion, Nativity) | name |
 | 85 | Random Alpha Numeric | random_alpha_numeric |
 | 86 | IPv6 Address (Random) | ip_address |
-| 87 | Retain | retain |
 
 ## GAN Strategies
 These strategies use different GAN models for synthetic data generation. The appropriate strategy (categorical/numeric) is applied based on the column type.
