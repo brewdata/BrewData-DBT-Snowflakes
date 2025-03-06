@@ -105,7 +105,7 @@ def model(dbt, session):
     
     # Configuration for synthetic data generation
     config={"columns_config":[{"source_column": "gender",
-            "pattern":None, "pattern_id":None, "strategy_id":60, "dependent_fields":[], "tokenization_type": "NA"}
+            "pattern":None, "pattern_id":None, "strategy_id":59, "dependent_fields":[], "tokenization_type": "NA"}
                           ]}
     
     # Generate synthetic data
