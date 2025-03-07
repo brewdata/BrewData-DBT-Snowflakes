@@ -20,7 +20,6 @@ def get_dbt_profile():
     """Get the dbt profile based on the current directory name."""
     # Get current directory name
     current_dir = str(Path(os.getcwd()).resolve())
-    print(f"Current directory: {current_dir}")
     
     # Clean up the directory name to match profile name format
     profile_name = current_dir.replace('-', '_')
