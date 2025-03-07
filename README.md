@@ -51,12 +51,25 @@ During initialization, you'll be prompted to enter your Snowflake connection det
 - **Role** (optional)
 
 ## Step 3(Script): Download and Upload the BrewData Package
-### 1. download the script file
-- download the the `brewdata_setup.py` and place it in your `<DBT_PROJECT>` directory where `profiles.yml` file is present and run the below command to run the script.
-```bash
-python brewdata_setup.py
-```
+
+### 1. download the script file 
+- download the the `brewdata_setup.py` and place it in your `<DBT_PROJECT>` directory where `profiles.yml` file is present.
+  #### OR 
+- run the following command in the your `<DBT_PROJECT>` directory where `profiles.yml` file is present.
+  ```bash
+  curl -O https://raw.githubusercontent.com/brewdata/BrewData-DBT-Snowflakes/refs/heads/main/brewdata_setup.py
+  ```
+
+### 2. Run Script
+- run the below command to run the script
+  ```bash
+  python brewdata_setup.py
+  ```
 - select the profile and it will place the `brewwdata_lib.zip`inside the `BREWDATA_PACKAGE` **stage** of your `Database`.
+- _(optional)_ you can provide the stage name while running the script to upload zip file.
+  ```bash
+  python brewdata_setup.py --stage_name <STAGE_NAME_TO_UPLOAD_PACKAGE>
+  ```
 
 ## Step 3(Manual): Download and Upload the BrewData Package
 
