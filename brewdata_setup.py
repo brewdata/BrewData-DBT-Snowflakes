@@ -60,6 +60,21 @@ def get_dbt_profile():
     
     # Get the target profile (default is 'dev')
     target_name = profiles[profile_name].get('target', 'dev')
+
+    # get the target profile
+    print(f"Current Selected Target : {target_name} \n Would you like to change it? (y/n)")
+    change_target = input()
+    while change_target.lower() not in ['y', 'n']:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        print(f"Current Selected Target : {target_name} \n Would you like to change it? (y/n)")
+        change_target = input()
+    if change_target.lower() == 'y':
+        print("Please select a target:")
+        for i, p in enumerate(profiles[profile_name]['outputs'].keys()):
+            print(f"{i}: {p}")
+        selection = int(input("Enter target number: "))
+        target_name = list(profiles[profile_name]['outputs'].keys())[selection]
+
     target_profile = profiles[profile_name]['outputs'][target_name]
     
     return profile_name, target_profile
