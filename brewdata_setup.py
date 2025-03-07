@@ -137,6 +137,8 @@ def create_snowflake_stage_and_upload(profile, zip_file_path, stage_name=None):
     # If stage_name is not provided, create a default one
     if not stage_name:
         stage_name = f"{profile['database']}.{profile['schema']}.BREWDATA_STAGE"
+    else :
+        stage_name = f"{profile['database']}.{profile['schema']}.{stage_name.upper()}"
     
     try:
         # Create cursor
@@ -198,7 +200,7 @@ def model(dbt, session):
          materialized="table",
          packages=["shapely", "transformers", "sympy", "faker", "requests", "xmltodict", "xmlschema", 
                    "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
-         imports=['@{profile["database"]}.{profile["schema"]}.BREWDATA_STAGE/brewdata_lib.zip'] # change to your @{{DB_NAME}}.{{SCHEMA_NAME}}.{{STAGE_NAME}}/brewdata_lib.zip
+         imports=['@{stage_name}/brewdata_lib.zip'] # change to your @{{DB_NAME}}.{{SCHEMA_NAME}}.{{STAGE_NAME}}/brewdata_lib.zip
     )
 
     # Import custom BrewData module AFTER the config call
