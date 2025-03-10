@@ -1,0 +1,74 @@
+# Project information
+site_name: BrewDATA-DBT-Snowflake
+# defeine TOC or order of website-
+nav:
+  - Home: index.md
+  - Setup: example/quickstart-setup.md
+  - Strategies: strategies.md
+
+  # - APIreference: APIreference.md
+
+site_author: Brewdata
+site_description: >-
+  Library for Data Synthesis
+
+# Repository
+repo_name: BrewDATA-DBT-Snowflake
+repo_url: https://github.com/brewdata/BrewData-DBT-Snowflakes
+
+# Configuration
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: teal
+      accent: purple 
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: teal
+      accent: lime    
+  # logo: PyTorch_logo_icon.svg
+  
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      # link: https://github.com/    - icon: fontawesome/brands/twitter
+      # link: https://twitter.com/    - icon: fontawesome/brands/linkedin
+      # link: https://linkedin.com/in/    - icon: fontawesome/brands/instagram
+      # link: https://www.instagram.com/
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  
+  
+plugins:
+  - search
+
+# copyright: |
+#   # &copy; 2022 <a href="https://github.com/  target="_blank" rel="noopener">BrewData</a>
