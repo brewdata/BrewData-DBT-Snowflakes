@@ -439,11 +439,11 @@
         <li class="md-nav__item">
   <a href="#step-3script-download-and-upload-the-brewdata-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3(Script): Download and Upload the BrewData Package
+      Step 3(Script): Download and Upload the brewdata Package
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 3(Script): Download and Upload the BrewData Package">
+    <nav class="md-nav" aria-label="Step 3(Script): Download and Upload the brewdata Package">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -496,17 +496,17 @@
         <li class="md-nav__item">
   <a href="#step-3manual-download-and-upload-the-brewdata-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3(Manual): Download and Upload the BrewData Package
+      Step 3(Manual): Download and Upload the brewdata Package
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 3(Manual): Download and Upload the BrewData Package">
+    <nav class="md-nav" aria-label="Step 3(Manual): Download and Upload the brewdata Package">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1-download-the-brewdata-package" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Download the BrewData package
+      1. Download the brewdata package
     </span>
   </a>
   
@@ -547,17 +547,17 @@
         <li class="md-nav__item">
   <a href="#step-4-run-a-dbt-model-with-the-brewdata-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Run a dbt Model with the BrewData Package
+      Step 4: Run a dbt Model with the brewdata Package
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 4: Run a dbt Model with the BrewData Package">
+    <nav class="md-nav" aria-label="Step 4: Run a dbt Model with the brewdata Package">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#example-using-brewdata-in-a-dbt-python-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Using BrewData in a dbt-Python Model
+      Example: Using brewdata in a dbt-Python Model
     </span>
   </a>
   
@@ -671,7 +671,7 @@
   (optional)</p>
 </li>
 </ul>
-<h2 id="step-3script-download-and-upload-the-brewdata-package">Step 3(Script): Download and Upload the BrewData Package</h2>
+<h2 id="step-3script-download-and-upload-the-brewdata-package">Step 3(Script): Download and Upload the brewdata Package</h2>
 <h3 id="1-get-the-setup-script">1. Get the setup script</h3>
 <p>You have two options:</p>
 <h4 id="option-a-download-the-script-file">Option A: Download the script file</h4>
@@ -764,7 +764,7 @@
 <a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a>    <span class="k">return</span> <span class="n">profile_name</span><span class="p">,</span> <span class="n">target_profile</span>
 <a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a>
 <a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a><span class="k">def</span><span class="w"> </span><span class="nf">download_brewdata_package</span><span class="p">(</span><span class="n">download_path</span><span class="p">,</span> <span class="n">github_url</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Download the BrewData package or use a local file.&quot;&quot;&quot;</span>
+<a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Download the brewdata package or use a local file.&quot;&quot;&quot;</span>
 <a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a>
 <a id="__codelineno-4-86" name="__codelineno-4-86" href="#__codelineno-4-86"></a>    <span class="n">local_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_path</span><span class="p">,</span> <span class="s2">&quot;brewdata_lib.zip&quot;</span><span class="p">)</span>
@@ -777,7 +777,7 @@
 <a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a>            <span class="k">return</span> <span class="n">local_path</span>
 <a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a>
 <a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a>    <span class="c1"># Download the file</span>
-<a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading BrewData package from </span><span class="si">{</span><span class="n">github_url</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading brewdata package from </span><span class="si">{</span><span class="n">github_url</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 <a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">github_url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a>    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
 <a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to download package. Status code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -847,9 +847,9 @@
 <a id="__codelineno-4-163" name="__codelineno-4-163" href="#__codelineno-4-163"></a>        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <a id="__codelineno-4-164" name="__codelineno-4-164" href="#__codelineno-4-164"></a>
 <a id="__codelineno-4-165" name="__codelineno-4-165" href="#__codelineno-4-165"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-4-166" name="__codelineno-4-166" href="#__codelineno-4-166"></a>    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Set up BrewData package with dbt Core and Snowflake&#39;</span><span class="p">)</span>
-<a id="__codelineno-4-167" name="__codelineno-4-167" href="#__codelineno-4-167"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--url&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;GitHub URL for the BrewData package&#39;</span><span class="p">)</span>
-<a id="__codelineno-4-168" name="__codelineno-4-168" href="#__codelineno-4-168"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--download_path&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to download the BrewData package&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-166" name="__codelineno-4-166" href="#__codelineno-4-166"></a>    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Set up brewdata package with dbt Core and Snowflake&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-167" name="__codelineno-4-167" href="#__codelineno-4-167"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--url&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;GitHub URL for the brewdata package&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-168" name="__codelineno-4-168" href="#__codelineno-4-168"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--download_path&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to download the brewdata package&#39;</span><span class="p">)</span>
 <a id="__codelineno-4-169" name="__codelineno-4-169" href="#__codelineno-4-169"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--stage_name&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Custom stage name (optional)&#39;</span><span class="p">)</span>
 <a id="__codelineno-4-170" name="__codelineno-4-170" href="#__codelineno-4-170"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--keep_zip&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Keep the ZIP file after upload&#39;</span><span class="p">)</span>
 <a id="__codelineno-4-171" name="__codelineno-4-171" href="#__codelineno-4-171"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
@@ -863,7 +863,7 @@
 <a id="__codelineno-4-179" name="__codelineno-4-179" href="#__codelineno-4-179"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using profile: </span><span class="si">{</span><span class="n">profile_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-4-180" name="__codelineno-4-180" href="#__codelineno-4-180"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Snowflake connection: </span><span class="si">{</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">profile</span><span class="p">[</span><span class="s1">&#39;account&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-4-181" name="__codelineno-4-181" href="#__codelineno-4-181"></a>
-<a id="__codelineno-4-182" name="__codelineno-4-182" href="#__codelineno-4-182"></a>        <span class="c1"># Download BrewData package</span>
+<a id="__codelineno-4-182" name="__codelineno-4-182" href="#__codelineno-4-182"></a>        <span class="c1"># Download brewdata package</span>
 <a id="__codelineno-4-183" name="__codelineno-4-183" href="#__codelineno-4-183"></a>        <span class="n">zip_file_path</span> <span class="o">=</span> <span class="n">download_brewdata_package</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">download_path</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 <a id="__codelineno-4-184" name="__codelineno-4-184" href="#__codelineno-4-184"></a>
 <a id="__codelineno-4-185" name="__codelineno-4-185" href="#__codelineno-4-185"></a>        <span class="c1"># Create stage and upload</span>
@@ -877,7 +877,7 @@
 <a id="__codelineno-4-193" name="__codelineno-4-193" href="#__codelineno-4-193"></a>        <span class="c1"># Print instructions for the user</span>
 <a id="__codelineno-4-194" name="__codelineno-4-194" href="#__codelineno-4-194"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Setup Complete!&quot;</span><span class="p">)</span>
 <a id="__codelineno-4-195" name="__codelineno-4-195" href="#__codelineno-4-195"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===================================&quot;</span><span class="p">)</span>
-<a id="__codelineno-4-196" name="__codelineno-4-196" href="#__codelineno-4-196"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To use BrewData in your dbt-Python model, include the following in your model file:&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-196" name="__codelineno-4-196" href="#__codelineno-4-196"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To use brewdata in your dbt-Python model, include the following in your model file:&quot;</span><span class="p">)</span>
 <a id="__codelineno-4-197" name="__codelineno-4-197" href="#__codelineno-4-197"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <a id="__codelineno-4-198" name="__codelineno-4-198" href="#__codelineno-4-198"></a><span class="s2">def model(dbt, session):</span>
 <a id="__codelineno-4-199" name="__codelineno-4-199" href="#__codelineno-4-199"></a><span class="s2">    dbt.config(</span>
@@ -887,7 +887,7 @@
 <a id="__codelineno-4-203" name="__codelineno-4-203" href="#__codelineno-4-203"></a><span class="s2">         imports=[&#39;@</span><span class="si">{</span><span class="n">stage_name</span><span class="si">}</span><span class="s2">/brewdata_lib.zip&#39;] # change to your @</span><span class="se">{{</span><span class="s2">DB_NAME</span><span class="se">}}</span><span class="s2">.</span><span class="se">{{</span><span class="s2">SCHEMA_NAME</span><span class="se">}}</span><span class="s2">.</span><span class="se">{{</span><span class="s2">STAGE_NAME</span><span class="se">}}</span><span class="s2">/brewdata_lib.zip</span>
 <a id="__codelineno-4-204" name="__codelineno-4-204" href="#__codelineno-4-204"></a><span class="s2">    )</span>
 <a id="__codelineno-4-205" name="__codelineno-4-205" href="#__codelineno-4-205"></a>
-<a id="__codelineno-4-206" name="__codelineno-4-206" href="#__codelineno-4-206"></a><span class="s2">    # Import custom BrewData module AFTER the config call</span>
+<a id="__codelineno-4-206" name="__codelineno-4-206" href="#__codelineno-4-206"></a><span class="s2">    # Import custom brewdata module AFTER the config call</span>
 <a id="__codelineno-4-207" name="__codelineno-4-207" href="#__codelineno-4-207"></a><span class="s2">    from brewdata_dbt import FileSyntheticData</span>
 <a id="__codelineno-4-208" name="__codelineno-4-208" href="#__codelineno-4-208"></a>
 <a id="__codelineno-4-209" name="__codelineno-4-209" href="#__codelineno-4-209"></a><span class="s2">    # Your code here</span>
@@ -917,9 +917,9 @@
   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>brewdata_setup.py<span class="w"> </span>--stage_name<span class="w"> </span>&lt;STAGE_NAME_TO_UPLOAD_PACKAGE&gt;
 </code></pre></div></li>
 </ul>
-<h2 id="step-3manual-download-and-upload-the-brewdata-package">Step 3(Manual): Download and Upload the BrewData Package</h2>
-<h3 id="1-download-the-brewdata-package">1. Download the BrewData package</h3>
-<p>Get the BrewData package ZIP file from the official GitHub repository <a href="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip">here</a>.</p>
+<h2 id="step-3manual-download-and-upload-the-brewdata-package">Step 3(Manual): Download and Upload the brewdata Package</h2>
+<h3 id="1-download-the-brewdata-package">1. Download the brewdata package</h3>
+<p>Get the brewdata package ZIP file from the official GitHub repository <a href="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip">here</a>.</p>
 <h3 id="2-upload-the-package-to-snowflake">2. Upload the package to Snowflake</h3>
 <p>Log in to your Snowflake account via the web UI and follow these steps:</p>
 <h3 id="3-create-a-snowflake-stage">3. Create a Snowflake Stage</h3>
@@ -933,15 +933,15 @@
 <h3 id="4-upload-the-zip-file-to-the-stage">4. Upload the ZIP File to the Stage</h3>
 <ol>
 <li>Open the newly created stage.</li>
-<li>Click <strong>Upload</strong> and select the BrewData ZIP file.</li>
+<li>Click <strong>Upload</strong> and select the brewdata ZIP file.</li>
 <li>Wait for the upload to complete.</li>
 </ol>
-<h2 id="step-4-run-a-dbt-model-with-the-brewdata-package">Step 4: Run a dbt Model with the BrewData Package</h2>
-<p>Your dbt-python model (inside the <code>models</code> directory) can import the BrewData package and use it within the model.</p>
-<h3 id="example-using-brewdata-in-a-dbt-python-model">Example: Using BrewData in a dbt-Python Model</h3>
+<h2 id="step-4-run-a-dbt-model-with-the-brewdata-package">Step 4: Run a dbt Model with the brewdata Package</h2>
+<p>Your dbt-python model (inside the <code>models</code> directory) can import the brewdata package and use it within the model.</p>
+<h3 id="example-using-brewdata-in-a-dbt-python-model">Example: Using brewdata in a dbt-Python Model</h3>
 <p>Create a new Python model (<code>models/brewdata_dbt_model.py</code>) and include the following code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">dbt</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="c1"># Configure the model with required packages and BrewData import</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="c1"># Configure the model with required packages and brewdata import</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">dbt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>         <span class="n">materialized</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>         <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;shapely&quot;</span><span class="p">,</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span><span class="s2">&quot;sympy&quot;</span><span class="p">,</span> <span class="s2">&quot;faker&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">,</span> <span class="s2">&quot;xmltodict&quot;</span><span class="p">,</span> <span class="s2">&quot;xmlschema&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;scikit-learn&quot;</span><span class="p">,</span> <span class="s2">&quot;scipy&quot;</span><span class="p">,</span> <span class="s2">&quot;tqdm&quot;</span><span class="p">,</span> <span class="s2">&quot;pytorch&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="p">],</span>
@@ -951,7 +951,7 @@
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>         <span class="n">imports</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip&#39;</span><span class="p">]</span> <span class="c1"># change to your @{DB_NAME}.{SCHEMA_NAME}.{STAGE_NAME}/brewdata_lib.zip</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">)</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="c1"># Import custom BrewData module AFTER the config call</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="c1"># Import custom brewdata module AFTER the config call</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">brewdata_dbt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileSyntheticData</span>
 <a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="c1"># Fetch customer data from an upstream model</span>
