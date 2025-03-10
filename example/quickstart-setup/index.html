@@ -648,20 +648,16 @@
 <h2 id="step-3script-download-and-upload-the-brewdata-package">Step 3(Script): Download and Upload the BrewData Package</h2>
 <h3 id="1-download-the-script-file">1. download the script file</h3>
 <ul>
-<li>download the the <code>brewdata_setup.py</code> and place it in your <code>&lt;DBT_PROJECT&gt;</code> directory where <code>profiles.yml</code> file is present.
-  #### OR </li>
-<li>run the following command in the your <code>&lt;DBT_PROJECT&gt;</code> directory where <code>profiles.yml</code> file is present.
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/brewdata/BrewData-DBT-Snowflakes/refs/heads/main/brewdata_setup.py
-</code></pre></div></li>
+<li>download the the <code>brewdata_setup.py</code> and place it in your <code>&lt;DBT_PROJECT&gt;</code> directory where <code>profiles.yml</code> file is present.</li>
 </ul>
 <h3 id="2-run-script">2. Run Script</h3>
 <ul>
 <li>run the below command to run the script
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>brewdata_setup.py
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>brewdata_setup.py
 </code></pre></div></li>
 <li>select the profile and it will place the <code>brewwdata_lib.zip</code>inside the <code>BREWDATA_PACKAGE</code> <strong>stage</strong> of your <code>Database</code>.</li>
 <li><em>(optional)</em> you can provide the stage name while running the script to upload zip file.
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>brewdata_setup.py<span class="w"> </span>--stage_name<span class="w"> </span>&lt;STAGE_NAME_TO_UPLOAD_PACKAGE&gt;
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>brewdata_setup.py<span class="w"> </span>--stage_name<span class="w"> </span>&lt;STAGE_NAME_TO_UPLOAD_PACKAGE&gt;
 </code></pre></div></li>
 </ul>
 <h2 id="step-3manual-download-and-upload-the-brewdata-package">Step 3(Manual): Download and Upload the BrewData Package</h2>
@@ -687,44 +683,44 @@
 <p>Your dbt-python model (inside the <code>models</code> directory) can import the BrewData package and use it within the model.</p>
 <h3 id="example-using-brewdata-in-a-dbt-python-model">Example: Using BrewData in a dbt-Python Model</h3>
 <p>Create a new Python model (<code>models/brewdata_dbt_model.py</code>) and include the following code:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">dbt</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="c1"># Configure the model with required packages and BrewData import</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">dbt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>         <span class="n">materialized</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>         <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;shapely&quot;</span><span class="p">,</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span><span class="s2">&quot;sympy&quot;</span><span class="p">,</span> <span class="s2">&quot;faker&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">,</span> <span class="s2">&quot;xmltodict&quot;</span><span class="p">,</span> <span class="s2">&quot;xmlschema&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;scikit-learn&quot;</span><span class="p">,</span> <span class="s2">&quot;scipy&quot;</span><span class="p">,</span> <span class="s2">&quot;tqdm&quot;</span><span class="p">,</span> <span class="s2">&quot;pytorch&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>         <span class="c1"># tested on python 3.10</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>         <span class="c1"># packages=[&quot;shapely==2.0.5&quot;, &quot;transformers==4.45.2&quot;, &quot;sympy==1.13.3&quot;, &quot;faker==30.8.1&quot;, &quot;requests==2.32.3&quot;, &quot;xmltodict==0.13.0&quot;, &quot;xmlschema==2.3.1&quot;, &quot;pandas==2.0.3&quot;, &quot;numpy==1.24.3&quot;, &quot;scikit-learn==1.3.0&quot;, &quot;scipy==1.10.1&quot;, &quot;tqdm==4.66.5&quot;, &quot;pytorch==2.3.0&quot;, &quot;datasets==2.19.1&quot;],</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>         <span class="n">imports</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip&#39;</span><span class="p">]</span> <span class="c1"># change to your @{DB_NAME}.{SCHEMA_NAME}.{STAGE_NAME}/brewdata_lib.zip</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">)</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="c1"># Import custom BrewData module AFTER the config call</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">brewdata_dbt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileSyntheticData</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="c1"># Fetch customer data from an upstream model</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="n">customer_data</span> <span class="o">=</span> <span class="n">dbt</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="s2">&quot;customer&quot;</span><span class="p">)</span> <span class="c1"># (schema name, table name)</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">customer_data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="n">fsd</span> <span class="o">=</span> <span class="n">FileSyntheticData</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en-US&#39;</span><span class="p">)</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="c1"># Configuration for synthetic data generation</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;columns_config&quot;</span><span class="p">:[</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>                              <span class="p">{</span><span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="s2">&quot;gender&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>                              <span class="s2">&quot;pattern&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> 
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>                              <span class="s2">&quot;pattern_id&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> 
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>                              <span class="s2">&quot;strategy_id&quot;</span><span class="p">:</span><span class="mi">59</span><span class="p">,</span> 
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>                              <span class="s2">&quot;dependent_fields&quot;</span><span class="p">:[],</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>                              <span class="s2">&quot;tokenization_type&quot;</span><span class="p">:</span> <span class="s2">&quot;NA&quot;</span><span class="p">}</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>                          <span class="p">]}</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    <span class="c1"># Generate synthetic data</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>    <span class="n">fsd</span><span class="o">.</span><span class="n">start_synthetic</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">table_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>    <span class="n">ddf</span> <span class="o">=</span> <span class="n">fsd</span><span class="o">.</span><span class="n">synthetic_file_content</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>    <span class="k">return</span> <span class="n">ddf</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">dbt</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="c1"># Configure the model with required packages and BrewData import</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">dbt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>         <span class="n">materialized</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>         <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;shapely&quot;</span><span class="p">,</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span><span class="s2">&quot;sympy&quot;</span><span class="p">,</span> <span class="s2">&quot;faker&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">,</span> <span class="s2">&quot;xmltodict&quot;</span><span class="p">,</span> <span class="s2">&quot;xmlschema&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;scikit-learn&quot;</span><span class="p">,</span> <span class="s2">&quot;scipy&quot;</span><span class="p">,</span> <span class="s2">&quot;tqdm&quot;</span><span class="p">,</span> <span class="s2">&quot;pytorch&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="p">],</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>         <span class="c1"># tested on python 3.10</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>         <span class="c1"># packages=[&quot;shapely==2.0.5&quot;, &quot;transformers==4.45.2&quot;, &quot;sympy==1.13.3&quot;, &quot;faker==30.8.1&quot;, &quot;requests==2.32.3&quot;, &quot;xmltodict==0.13.0&quot;, &quot;xmlschema==2.3.1&quot;, &quot;pandas==2.0.3&quot;, &quot;numpy==1.24.3&quot;, &quot;scikit-learn==1.3.0&quot;, &quot;scipy==1.10.1&quot;, &quot;tqdm==4.66.5&quot;, &quot;pytorch==2.3.0&quot;, &quot;datasets==2.19.1&quot;],</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>         <span class="n">imports</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip&#39;</span><span class="p">]</span> <span class="c1"># change to your @{DB_NAME}.{SCHEMA_NAME}.{STAGE_NAME}/brewdata_lib.zip</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="c1"># Import custom BrewData module AFTER the config call</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">brewdata_dbt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileSyntheticData</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="c1"># Fetch customer data from an upstream model</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="n">customer_data</span> <span class="o">=</span> <span class="n">dbt</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="s2">&quot;customer&quot;</span><span class="p">)</span> <span class="c1"># (schema name, table name)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">customer_data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">fsd</span> <span class="o">=</span> <span class="n">FileSyntheticData</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en-US&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="c1"># Configuration for synthetic data generation</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;columns_config&quot;</span><span class="p">:[</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>                              <span class="p">{</span><span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="s2">&quot;gender&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>                              <span class="s2">&quot;pattern&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>                              <span class="s2">&quot;pattern_id&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>                              <span class="s2">&quot;strategy_id&quot;</span><span class="p">:</span><span class="mi">59</span><span class="p">,</span> 
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>                              <span class="s2">&quot;dependent_fields&quot;</span><span class="p">:[],</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>                              <span class="s2">&quot;tokenization_type&quot;</span><span class="p">:</span> <span class="s2">&quot;NA&quot;</span><span class="p">}</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>                          <span class="p">]}</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="c1"># Generate synthetic data</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">fsd</span><span class="o">.</span><span class="n">start_synthetic</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">table_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">ddf</span> <span class="o">=</span> <span class="n">fsd</span><span class="o">.</span><span class="n">synthetic_file_content</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="k">return</span> <span class="n">ddf</span>
 </code></pre></div>
 <h3 id="step-5-run-the-model">Step 5: Run the Model</h3>
 <p>Execute the following command to run the model:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>brewdata_dbt_model
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>brewdata_dbt_model
 </code></pre></div>
 
 
