@@ -48,7 +48,7 @@ During initialization, you'll be prompted to enter your Snowflake connection det
 - **Role** 
   (optional)
 
-## Step 3(Script): Download and Upload the BrewData Package
+## Step 3(Script): Download and Upload the brewdata Package
 
 ### 1. Get the setup script
 You have two options:
@@ -142,7 +142,7 @@ def get_dbt_profile():
     return profile_name, target_profile
 
 def download_brewdata_package(download_path, github_url=None):
-    """Download the BrewData package or use a local file."""
+    """Download the brewdata package or use a local file."""
     import requests
     
     local_path = os.path.join(download_path, "brewdata_lib.zip")
@@ -155,7 +155,7 @@ def download_brewdata_package(download_path, github_url=None):
             return local_path
     
     # Download the file
-    print(f"Downloading BrewData package from {github_url}...")
+    print(f"Downloading brewdata package from {github_url}...")
     response = requests.get(github_url, stream=True)
     if response.status_code != 200:
         raise Exception(f"Failed to download package. Status code: {response.status_code}")
@@ -225,9 +225,9 @@ def create_snowflake_stage_and_upload(profile, zip_file_path, stage_name=None):
         conn.close()
 
 def main():
-    parser = argparse.ArgumentParser(description='Set up BrewData package with dbt Core and Snowflake')
-    parser.add_argument('--url', default="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip", help='GitHub URL for the BrewData package')
-    parser.add_argument('--download_path', default='.', help='Path to download the BrewData package')
+    parser = argparse.ArgumentParser(description='Set up brewdata package with dbt Core and Snowflake')
+    parser.add_argument('--url', default="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip", help='GitHub URL for the brewdata package')
+    parser.add_argument('--download_path', default='.', help='Path to download the brewdata package')
     parser.add_argument('--stage_name', help='Custom stage name (optional)')
     parser.add_argument('--keep_zip', action='store_true', help='Keep the ZIP file after upload')
     args = parser.parse_args()
@@ -241,7 +241,7 @@ def main():
         print(f"Using profile: {profile_name}")
         print(f"Snowflake connection: {profile['user']}@{profile['account']}")
         
-        # Download BrewData package
+        # Download brewdata package
         zip_file_path = download_brewdata_package(args.download_path, args.url)
         
         # Create stage and upload
@@ -255,7 +255,7 @@ def main():
         # Print instructions for the user
         print("\nSetup Complete!")
         print("===================================")
-        print("To use BrewData in your dbt-Python model, include the following in your model file:")
+        print("To use brewdata in your dbt-Python model, include the following in your model file:")
         print(f"""
 def model(dbt, session):
     dbt.config(
@@ -265,7 +265,7 @@ def model(dbt, session):
          imports=['@{stage_name}/brewdata_lib.zip'] # change to your @{{DB_NAME}}.{{SCHEMA_NAME}}.{{STAGE_NAME}}/brewdata_lib.zip
     )
 
-    # Import custom BrewData module AFTER the config call
+    # Import custom brewdata module AFTER the config call
     from brewdata_dbt import FileSyntheticData
     
     # Your code here
@@ -297,11 +297,11 @@ if __name__ == "__main__":
   python brewdata_setup.py --stage_name <STAGE_NAME_TO_UPLOAD_PACKAGE>
   ```
 
-## Step 3(Manual): Download and Upload the BrewData Package
+## Step 3(Manual): Download and Upload the brewdata Package
 
-### 1. Download the BrewData package
+### 1. Download the brewdata package
 
-Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip).
+Get the brewdata package ZIP file from the official GitHub repository [here](https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip).
 
 ### 2. Upload the package to Snowflake
 
@@ -318,20 +318,20 @@ Log in to your Snowflake account via the web UI and follow these steps:
 ### 4. Upload the ZIP File to the Stage
 
 1. Open the newly created stage.
-2. Click **Upload** and select the BrewData ZIP file.
+2. Click **Upload** and select the brewdata ZIP file.
 3. Wait for the upload to complete.
 
-## Step 4: Run a dbt Model with the BrewData Package
+## Step 4: Run a dbt Model with the brewdata Package
 
-Your dbt-python model (inside the `models` directory) can import the BrewData package and use it within the model.
+Your dbt-python model (inside the `models` directory) can import the brewdata package and use it within the model.
 
-### Example: Using BrewData in a dbt-Python Model
+### Example: Using brewdata in a dbt-Python Model
 
 Create a new Python model (`models/brewdata_dbt_model.py`) and include the following code:
 
 ```python
 def model(dbt, session):
-    # Configure the model with required packages and BrewData import
+    # Configure the model with required packages and brewdata import
     dbt.config(
          materialized="table",
          packages=["shapely","transformers","sympy", "faker", "requests", "xmltodict", "xmlschema", "pandas", "numpy", "scikit-learn", "scipy", "tqdm", "pytorch", "datasets"],
@@ -341,7 +341,7 @@ def model(dbt, session):
          imports=['@BREWDATA_PUBLIC.PUBLIC.PUBLIC_STAGE/brewdata_lib.zip'] # change to your @{DB_NAME}.{SCHEMA_NAME}.{STAGE_NAME}/brewdata_lib.zip
     )
 
-    # Import custom BrewData module AFTER the config call
+    # Import custom brewdata module AFTER the config call
     from brewdata_dbt import FileSyntheticData
     
     # Fetch customer data from an upstream model

@@ -1,4 +1,4 @@
-# BrewData Strategy Documentation
+# brewdata Strategy Documentation
 
 ## Standard Strategies
 

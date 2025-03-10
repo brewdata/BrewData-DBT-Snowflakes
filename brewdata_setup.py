@@ -80,7 +80,7 @@ def get_dbt_profile():
     return profile_name, target_profile
 
 def download_brewdata_package(download_path, github_url=None):
-    """Download the BrewData package or use a local file."""
+    """Download the brewdata package or use a local file."""
     import requests
     
     local_path = os.path.join(download_path, "brewdata_lib.zip")
@@ -93,7 +93,7 @@ def download_brewdata_package(download_path, github_url=None):
             return local_path
     
     # Download the file
-    print(f"Downloading BrewData package from {github_url}...")
+    print(f"Downloading brewdata package from {github_url}...")
     response = requests.get(github_url, stream=True)
     if response.status_code != 200:
         raise Exception(f"Failed to download package. Status code: {response.status_code}")
@@ -163,9 +163,9 @@ def create_snowflake_stage_and_upload(profile, zip_file_path, stage_name=None):
         conn.close()
 
 def main():
-    parser = argparse.ArgumentParser(description='Set up BrewData package with dbt Core and Snowflake')
-    parser.add_argument('--url', default="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip", help='GitHub URL for the BrewData package')
-    parser.add_argument('--download_path', default='.', help='Path to download the BrewData package')
+    parser = argparse.ArgumentParser(description='Set up brewdata package with dbt Core and Snowflake')
+    parser.add_argument('--url', default="https://github.com/brewdata/brewdata-dbt-Snowflake/releases/download/main/brewdata_lib.zip", help='GitHub URL for the brewdata package')
+    parser.add_argument('--download_path', default='.', help='Path to download the brewdata package')
     parser.add_argument('--stage_name', help='Custom stage name (optional)')
     parser.add_argument('--keep_zip', action='store_true', help='Keep the ZIP file after upload')
     args = parser.parse_args()
@@ -179,7 +179,7 @@ def main():
         print(f"Using profile: {profile_name}")
         print(f"Snowflake connection: {profile['user']}@{profile['account']}")
         
-        # Download BrewData package
+        # Download brewdata package
         zip_file_path = download_brewdata_package(args.download_path, args.url)
         
         # Create stage and upload
@@ -193,7 +193,7 @@ def main():
         # Print instructions for the user
         print("\nSetup Complete!")
         print("===================================")
-        print("To use BrewData in your dbt-Python model, include the following in your model file:")
+        print("To use brewdata in your dbt-Python model, include the following in your model file:")
         print(f"""
 def model(dbt, session):
     dbt.config(
@@ -203,7 +203,7 @@ def model(dbt, session):
          imports=['@{stage_name}/brewdata_lib.zip'] # change to your @{{DB_NAME}}.{{SCHEMA_NAME}}.{{STAGE_NAME}}/brewdata_lib.zip
     )
 
-    # Import custom BrewData module AFTER the config call
+    # Import custom brewdata module AFTER the config call
     from brewdata_dbt import FileSyntheticData
     
     # Your code here
