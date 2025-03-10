@@ -52,11 +52,7 @@ During initialization, you'll be prompted to enter your Snowflake connection det
 
 ### 1. download the script file 
 - download the the `brewdata_setup.py` and place it in your `<DBT_PROJECT>` directory where `profiles.yml` file is present.
-  #### OR 
-- run the following command in the your `<DBT_PROJECT>` directory where `profiles.yml` file is present.
-  ```bash
-  curl -O https://raw.githubusercontent.com/brewdata/BrewData-DBT-Snowflakes/refs/heads/main/brewdata_setup.py
-  ```
+
 
 ### 2. Run Script
 - run the below command to run the script
