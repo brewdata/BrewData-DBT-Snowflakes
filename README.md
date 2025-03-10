@@ -2,6 +2,9 @@
 
 This guide provides a step-by-step walkthrough for setting up and using the BrewData package with dbt Core and Snowflake.
 
+# Documentation
+(docs)[https://brewdata.github.io/BrewData-DBT-Snowflakes/]
+
 ## Prerequisites
 
 Before you begin, ensure you have the following:
