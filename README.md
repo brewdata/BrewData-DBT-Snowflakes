@@ -3,7 +3,7 @@
 This guide provides a step-by-step walkthrough for setting up and using the BrewData package with dbt Core and Snowflake.
 
 # Documentation
-Please visit [docs](https://brewdata.github.io/BrewData-DBT-Snowflakes/)
+Please visit [docs](https://brewdata.github.io/brewdata-dbt-Snowflake/)
 <br>
 ## Prerequisites
 
@@ -73,7 +73,7 @@ During initialization, you'll be prompted to enter your Snowflake connection det
 
 ### 1. Download the BrewData package
 
-Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata_lib.zip).
+Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/brewdata-dbt-Snowflake/blob/main/brewdata_lib.zip).
 
 ### 2. Upload the package to Snowflake
 
@@ -145,7 +145,7 @@ This will run your dbt model while utilizing the BrewData package.
 
 ## Additional Resources
 
-To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata-DBT/readme.md).
+To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/brewdata-dbt-Snowflake/blob/main/brewdata-DBT/readme.md).
 
 ---
 

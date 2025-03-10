@@ -27,7 +27,7 @@ The guide includes code examples and configuration details to help you get start
 
 ## Additional Resources
 
-To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata-DBT/readme.md).
+To learn more about configuration options and available strategies, [click here](https://github.com/brewdata/brewdata-dbt-Snowflake/blob/main/brewdata-DBT/readme.md).
 
 ---
 

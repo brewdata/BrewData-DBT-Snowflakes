@@ -14,7 +14,7 @@ site_description: >-
 
 # Repository
 repo_name: BrewDATA-DBT-Snowflake
-repo_url: https://github.com/brewdata/BrewData-DBT-Snowflakes
+repo_url: https://github.com/brewdata/brewdata-dbt-Snowflake
 
 # Configuration
 theme:
