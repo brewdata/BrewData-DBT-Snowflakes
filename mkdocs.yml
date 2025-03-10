@@ -1,5 +1,5 @@
 # Project information
-site_name: BrewDATA-DBT-Snowflake
+site_name: brewdata-dbt-Snowflake
 # defeine TOC or order of website-
 nav:
   - Home: index.md
@@ -13,7 +13,7 @@ site_description: >-
   Library for Data Synthesis
 
 # Repository
-repo_name: BrewDATA-DBT-Snowflake
+repo_name: brewdata-dbt-Snowflake
 repo_url: https://github.com/brewdata/brewdata-dbt-Snowflake
 
 # Configuration
@@ -69,6 +69,9 @@ markdown_extensions:
   
 plugins:
   - search
+
+extra_css:
+  - css/extra.css
 
 # copyright: |
 #   # &copy; 2022 <a href="https://github.com/  target="_blank" rel="noopener">BrewData</a>

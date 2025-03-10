@@ -1,0 +1,7 @@
+/* Force large code blocks to be scrollable if they exceed a certain height */
+.md-typeset pre code {
+    max-height: 400px;   /* Adjust as you prefer */
+    overflow-y: auto;    /* Vertical scrollbar if content is taller than 400px */
+    display: block;      /* Ensures it’s rendered as a block element */
+    white-space: pre;    /* Retain whitespace for code formatting */
+}
