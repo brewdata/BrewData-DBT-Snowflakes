@@ -73,7 +73,7 @@ During initialization, you'll be prompted to enter your Snowflake connection det
 
 ### 1. Download the BrewData package
 
-Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/BrewData-DBT-Snowflakes/blob/main/brewdata_lib.zip).
+Get the BrewData package ZIP file from the official GitHub repository [here](https://github.com/brewdata/BrewData-DBT-Snowflakes/releases/download/main/brewdata_lib.zip).
 
 ### 2. Upload the package to Snowflake
 

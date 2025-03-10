@@ -164,7 +164,7 @@ def create_snowflake_stage_and_upload(profile, zip_file_path, stage_name=None):
 
 def main():
     parser = argparse.ArgumentParser(description='Set up BrewData package with dbt Core and Snowflake')
-    parser.add_argument('--url', default="https://github.com/vaidikcs/ttd/releases/download/main/brewdata_lib.zip", help='GitHub URL for the BrewData package')
+    parser.add_argument('--url', default="https://github.com/brewdata/BrewData-DBT-Snowflakes/releases/download/main/brewdata_lib.zip", help='GitHub URL for the BrewData package')
     parser.add_argument('--download_path', default='.', help='Path to download the BrewData package')
     parser.add_argument('--stage_name', help='Custom stage name (optional)')
     parser.add_argument('--keep_zip', action='store_true', help='Keep the ZIP file after upload')
